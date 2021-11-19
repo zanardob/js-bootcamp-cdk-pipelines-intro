@@ -5,6 +5,8 @@ import {
   ShellStep,
 } from "@aws-cdk/pipelines";
 
+import { CdkpipelinesDemoStage } from "./cdkpipelines-demo-stage";
+
 /**
  * The stack that defines the application pipeline
  */
@@ -27,6 +29,24 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
     });
 
     // This is where we add the application stages
-    // ...
+    const preprod = new CdkpipelinesDemoStage(this, "PreProd", {
+      env: { account: "ACCOUNT1", region: "REGION" },
+    });
+
+    pipeline.addStage(preprod, {
+      post: [
+        new ShellStep("TestService", {
+          commands: [
+            // Use 'curl' to GET the given URL and fail if it returns an error
+            "curl -Ssf $ENDPOINT_URL",
+          ],
+          envFromCfnOutputs: {
+            // Get the stack Output from the Stage and make it available in
+            // the shell script as $ENDPOINT_URL.
+            ENDPOINT_URL: preprod.urlOutput,
+          },
+        }),
+      ],
+    });
   }
 }
