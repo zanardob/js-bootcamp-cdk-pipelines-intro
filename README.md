@@ -4,9 +4,8 @@
 
 1. Start up an A Cloud Guru Sandbox environment
 2. Configure your aws-cli with your sandbox environment credentials
-3. Fork this repository in your personal Github account
-4. Generate a [personal access token](https://www.notion.so/Deployment-automated-with-Codebuild-CodePipeline-c1676215d7b1439c81d7005ca4b36186#a888d66fec1e4b5296913c157b6145da) in your Github account
-5. Add your token to Secrets Manager in your ACG Sandbox environment as a plaintext secret with the name `github-token`
+3. Generate a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) in your Github account. The token should have the scopes `repo` and `admin:repo_hook`.
+4. Add your token to Secrets Manager in your ACG Sandbox environment as a plaintext secret with the name `github-token`
 
 ## Repo Setup
 
