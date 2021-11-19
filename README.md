@@ -1,14 +1,34 @@
-# Welcome to your CDK TypeScript project!
+# Jungle Scout CDK Bootcamp
 
-This is a blank project for TypeScript development with CDK.
+1. Make sure you are using Node v16
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+```
+nvm use 16
+```
 
-## Useful commands
+2. Install dependencies
 
- * `npm run build`   compile typescript to js
- * `npm run watch`   watch for changes and compile
- * `npm run test`    perform the jest unit tests
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
+```
+npm install
+```
+
+3. Replace `OWNER/REPO` on line 22 of `lib/cdkpipelines-demo-pipeline-stack.ts` with the owner and name of your forked Github repo.
+
+4. Replace `ACCOUNT1` and `REGION` on line 8 of `bin/cdkpipelines-demo.ts` with your AWS account id and region.
+
+5. Bootstrap your AWS account with the following command. Be sure to replace `account1-profile`, `ACCOUNT1`, and `REGION` with the appropriate values for you account and region.
+
+```
+npx cdk bootstrap \
+  --profile account1-profile \
+  --cloudformation-execution-policies arn:aws:iam::aws:policy/AdministratorAccess \
+  aws://ACCOUNT1/REGION
+```
+
+6. Deploy the pipeline stack, replacing `account1-profile`
+
+```
+npx cdk deploy \
+  --profile account1-profile \
+  CdkpipelinesDemoPipelineStack
+```
