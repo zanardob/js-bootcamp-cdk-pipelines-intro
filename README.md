@@ -27,7 +27,9 @@ npm install
 
 2. Replace `ACCOUNT1` and `REGION` on line 8 of `bin/cdkpipelines-demo.ts` with your AWS account id and region.
 
-3. Bootstrap your AWS account with the following command. Be sure to replace `account1-profile`, `ACCOUNT1`, and `REGION` with the appropriate values for you account and region.
+3. Commit and push these changes up to Github
+
+4. Bootstrap your AWS account with the following command. Be sure to replace `account1-profile`, `ACCOUNT1`, and `REGION` with the appropriate values for you account and region.
 
 ```
 npx cdk bootstrap \
@@ -36,7 +38,7 @@ npx cdk bootstrap \
   aws://ACCOUNT1/REGION
 ```
 
-4. Deploy the pipeline stack, replacing `account1-profile`
+5. Deploy the pipeline stack, replacing `account1-profile`
 
 ```
 npx cdk deploy \
