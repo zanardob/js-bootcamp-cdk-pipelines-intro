@@ -50,3 +50,8 @@ npx cdk deploy \
 
 1. Log in to your ACG Sandbox console and go to the CodePipeline console.
 2. Click on the `MyServicePipeline` and review the pipeline that was created.
+3. Review the cdk code in `lib/cdkpipelines-demo-pipeline-stack.ts` that was used to create the pipeline.
+
+## Next Steps
+
+Checkout the `step_2` branch and follow the instructions in `README.md`.
