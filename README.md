@@ -25,23 +25,28 @@ npm install
 
 1. Replace `OWNER/REPO` on line 22 of `lib/cdkpipelines-demo-pipeline-stack.ts` with the owner and name of your forked Github repo.
 
-2. Replace `ACCOUNT1` and `REGION` on line 8 of `bin/cdkpipelines-demo.ts` with your AWS account id and region.
+2. Replace `ACCOUNT` and `REGION` on line 8 of `bin/cdkpipelines-demo.ts` with your AWS account id and region.
 
-3. Commit and push these changes up to Github
+3. Commit and push these changes up to Github.
 
-4. Bootstrap your AWS account with the following command. Be sure to replace `account1-profile`, `ACCOUNT1`, and `REGION` with the appropriate values for you account and region.
+4. Bootstrap your AWS account with the following command. Be sure to replace `account-profile`, `ACCOUNT`, and `REGION` with the appropriate values for you account and region.
 
 ```
 npx cdk bootstrap \
-  --profile account1-profile \
+  --profile account-profile \
   --cloudformation-execution-policies arn:aws:iam::aws:policy/AdministratorAccess \
-  aws://ACCOUNT1/REGION
+  aws://ACCOUNT/REGION
 ```
 
-5. Deploy the pipeline stack, replacing `account1-profile`
+5. Deploy the pipeline stack, replacing `account-profile`
 
 ```
 npx cdk deploy \
-  --profile account1-profile \
+  --profile account-profile \
   CdkpipelinesDemoPipelineStack
 ```
+
+## Reviewing the Deployment
+
+1. Log in to your ACG Sandbox console and go to the CodePipeline console.
+2. Click on the `MyServicePipeline` and review the pipeline that was created.
