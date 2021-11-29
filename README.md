@@ -29,3 +29,7 @@ git push
 ```
 
 After the pipeline finishes, you can confirm that the service is up and running. Go to the CloudFormation console, select the PreProd-WebService stack, go to the outputs tab, and click on the GatewayEndpoint URL. You will see ‘Hello from a Lambda Function’.
+
+## Next Steps
+
+Checkout the `step_3` branch and follow the instructions in `README.md`.
