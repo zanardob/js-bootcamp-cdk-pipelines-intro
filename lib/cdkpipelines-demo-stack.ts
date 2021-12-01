@@ -2,6 +2,9 @@ import * as apigw from "@aws-cdk/aws-apigateway";
 import * as lambda from "@aws-cdk/aws-lambda";
 import { CfnOutput, Construct, Stack, StackProps } from "@aws-cdk/core";
 import * as path from "path";
+import * as cloudwatch from "@aws-cdk/aws-cloudwatch";
+
+import { SlackNotificationAction } from "@junglescout/geoglyphs";
 
 /**
  * A stack for our simple Lambda-powered web service
@@ -21,6 +24,19 @@ export class CdkpipelinesDemoStack extends Stack {
       handler: "handler.handler",
       code: lambda.Code.fromAsset(path.resolve(__dirname, "lambda")),
     });
+
+    const alarmAction = new SlackNotificationAction(this, {
+      webhookUrl: "",
+    });
+
+    const alarm = new cloudwatch.Alarm(this, "alarm", {
+      metric: handler.metricErrors(),
+      threshold: 1,
+      datapointsToAlarm: 1,
+      evaluationPeriods: 1,
+    });
+
+    alarm.addAlarmAction(alarmAction);
 
     // An API Gateway to make the Lambda web-accessible
     const gw = new apigw.LambdaRestApi(this, "Gateway", {
