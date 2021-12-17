@@ -25,8 +25,7 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
         commands: ["npm ci", "npm run build", "npx cdk synth"],
       }),
     });
-
-    // This is where we add the application stages
+// This is where we add the application stages
     // ...
   }
 }
